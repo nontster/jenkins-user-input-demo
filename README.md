@@ -36,3 +36,5 @@ pipeline {
     }
 }
 ```
+
+![Screenshot for code1](https://github.com/nontster/jenkins-user-input-demo/blob/master/Screenshot-Jenkinsfile-user-input-1.png)
