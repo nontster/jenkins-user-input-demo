@@ -1,6 +1,10 @@
 ﻿# Demo using user input in Jenkins Pipeline
  
 ### Copy image from Non-Production Docker Registry to Production Docker Registry
+
+[Image Tag Parameter Plug-in](https://plugins.jenkins.io/image-tag-parameter/) 
+
+
 ```
 def SITE_NON_PROD = 'registry-1.docker.io'
 def SITE_PROD = 'nexus:5000'
