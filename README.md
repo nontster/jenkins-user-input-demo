@@ -2,7 +2,7 @@
  
 ### Docker image promotion - Copy image from Non-Production to Production Docker Registry
 
-[Image Tag Parameter Plug-in](https://plugins.jenkins.io/image-tag-parameter/) 
+Below script employs the [Image Tag Parameter Plug-in](https://plugins.jenkins.io/image-tag-parameter/) 
 
 
 ```
