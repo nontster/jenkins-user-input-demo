@@ -104,7 +104,9 @@ pipeline {
 
 ![Screenshot for code1](https://github.com/nontster/jenkins-user-input-demo/blob/master/images/Screenshot-Jenkinsfile-user-input-1.png)
 
- ### Input Choices 
+___
+
+### Input Choices 
  
  ```
  List<String> CHOICES = [];
