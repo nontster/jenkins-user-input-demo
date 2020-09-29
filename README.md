@@ -60,6 +60,8 @@ pipeline {
 ```
 ![Screenshot for code1](https://github.com/nontster/jenkins-user-input-demo/blob/master/images/Screenshot-copy-image-from-nonprd-to-prd.png)
 
+___
+
 ### Yes/No
  
 ```
