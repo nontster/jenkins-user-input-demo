@@ -40,7 +40,7 @@ pipeline {
 }
 ```
 
-![Screenshot for code1](https://github.com/nontster/jenkins-user-input-demo/blob/master/Screenshot-Jenkinsfile-user-input-1.png)
+![Screenshot for code1](https://github.com/nontster/jenkins-user-input-demo/blob/master/images/Screenshot-Jenkinsfile-user-input-1.png)
 
  ### Input Choices 
  
@@ -82,5 +82,5 @@ pipeline {
     }
 }
  ```
- 
- ![Screenshot for code2](https://github.com/nontster/jenkins-user-input-demo/blob/master/Screenshot-Jenkinsfile-input-choices-1.png)
+
+ ![Screenshot for code2](https://github.com/nontster/jenkins-user-input-demo/blob/master/images/Screenshot-Jenkinsfile-input-choices-1.png)
