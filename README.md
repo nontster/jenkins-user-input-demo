@@ -1,6 +1,66 @@
 ﻿# Demo using user input in Jenkins Pipeline
  
- ### Yes/No
+### Copy image from Non-Production Docker Registry to Production Docker Registry
+```
+def SITE_NON_PROD = 'registry-1.docker.io'
+def SITE_PROD = 'nexus:5000'
+
+pipeline {
+  agent any
+  
+  parameters {
+    imageTag(name: 'DOCKER_IMAGE', description: '',
+             image: 'jenkins/jenkins', filter: '.*', defaultTag: '',
+             registry: '', credentialId: '', tagOrder: 'NATURAL')
+  }
+
+  stages {
+    stage('Pull image from Non-Prod Registry') {
+        steps {
+            echo "${env.DOCKER_IMAGE}" // will print selected image name with tag (eg. jenkins/jenkins:lts-jdk11)
+            echo "${env.DOCKER_IMAGE_TAG}" // will print selected tag value (eg. lts-jdk11)
+            echo "${env.DOCKER_IMAGE_IMAGE}" // will print selected image name value (eg. jenkins/jenkins)
+        
+            script {
+                docker.withRegistry("https://${SITE_NON_PROD}",'non-prod-registry-credentials') {
+                    sh "docker pull ${env.DOCKER_IMAGE}"
+                }
+            }
+        }
+    }
+    
+    stage('Re-Tag image') {
+         steps {
+             script {
+                sh "docker tag ${env.DOCKER_IMAGE} ${SITE_PROD}/${env.DOCKER_IMAGE}"
+             }      
+         }
+    }
+    
+    stage('Push image to Prod') {
+         steps {
+             script {
+                docker.withRegistry("http://${SITE_PROD}",'prod-registry-credentials') {
+                    sh "docker push ${SITE_PROD}/${env.DOCKER_IMAGE}"
+                }
+             }      
+         }
+    }
+    
+    stage('Cleanup') {
+         steps {
+             script {
+                sh "docker rmi ${env.DOCKER_IMAGE}" 
+                sh "docker rmi ${SITE_PROD}/${env.DOCKER_IMAGE}"
+             }      
+         }
+    }
+  }
+}
+```
+![Screenshot for code1](https://github.com/nontster/jenkins-user-input-demo/blob/master/images/Screenshot-copy-image-from-nonprd-to-prd.png)
+
+### Yes/No
  
 ```
 pipeline {
